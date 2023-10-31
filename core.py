@@ -19,7 +19,7 @@ class Choice:
 
     @property
     def prefix(self):
-        return "[%s]" % self.symbols[self.chosen]
+        return f"[{self.symbols[self.chosen]}]"
 
     def __init__(self, text: str, chosen=False):
         self.text = text
@@ -35,10 +35,7 @@ class ChoiceWithCompletion(Choice):
     letters = '_' * 8
 
     def __str__(self):
-        if self.text:
-            return f"{super().__str__()} {self.letters}"
-        else:
-            return self.letters
+        return f"{super().__str__()} {self.letters}" if self.text else self.letters
 
     __repr__ = __str__
 
